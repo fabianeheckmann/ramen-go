@@ -1,0 +1,157 @@
+/* .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+} */
+
+/* h1 {
+    text-align: center;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+button {
+    display: block;
+    margin-top: 10px;
+}
+
+#response {
+    margin-top: 20px;
+    font-weight: bold;
+} */
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+  margin: auto;
+  max-width: 100%;
+  padding: 20px;
+}
+
+.image-banner {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.background-image {
+  width: 100%;
+  height: auto;
+}
+
+.figure {
+  position: absolute;
+  top: 38px;
+  left: 30%;
+  width: 50%;
+  height: auto;
+}
+
+.go-figure {
+  position: absolute;
+  top: 35%;
+  left: 24.5%;
+  width: 250px;
+  height: 100px;
+}
+
+.letters-figure {
+  position: absolute;
+  top: 21%;
+  left: 20%;
+}
+
+.logo-image {
+  position: absolute;
+  width: 124.69px;
+  height: 15.67px;
+  top: 40.33px;
+  left: 40px;
+}
+
+.title-text {
+  position: absolute;
+  width: 250px;
+  height: 124px;
+  top: 360px;
+  left: 268px;
+  font-weight: 400px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  text-align: left;
+  letter-spacing: 0.1em;
+}
+
+.order-now-button {
+  position: absolute;
+  height: 60px;
+  width: 213px;
+  top: 70%;
+  left: 20%;
+  border-radius: 50px;
+  border: none;
+  background-color: #1820ef;
+  color: #ffffff;
+  text-align: start;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 20.79px;
+  padding: 20px;
+  letter-spacing: 0.1em;
+
+  img {
+    margin-left: 40px;
+    width: 14px;
+    height: 12px;
+  }
+}
+
+.order-now-button:hover {
+  cursor: pointer;
+  background-color: #ffc024;
+  color: #1820ef;
+  transition: 0.3s;
+}
+
+.element-content {
+  h1 {
+    margin-top: 80px;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.button-options {
+  margin: 0 10px;
+  background: transparent;
+  border: none;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 0;
+  border-radius: 20px;
+  cursor: pointer;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monte seu Lámen</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="banner-container">
+        <div class="image-banner">
+          <img src="./assets/Yellow.png" alt="Logo image" class="logo-image" />
+          <img
+            src="./assets/Rectangle 1.png"
+            alt="Background image"
+            class="background-image"
+          />
+          <img src="./assets/Ilustracao.png" alt="Figure" class="figure" />
+          <img src="./assets/GO!.png" alt="Go figure" class="go-figure" />
+          <img src="./assets/ラ l メ ン.png" alt=" " class="letters-figure" />
+          <p class="title-text">
+            Enjoy a good ramen in the comfort of your house. Create your own
+            ramen and choose your favorite flavour combination!
+          </p>
+          <button class="order-now-button" id="order-now-button">
+            ORDER NOW <img src="./assets/Fill 1.png" alt="" />
+          </button>
+        </div>
+      </div>
+      <div class="content-container" id="content-container">
+        <div class="element-content">
+          <h1>First things first: select your favorite broth.</h1>
+          <p>It will give the whole flavor on your ramen soup.</p>
+          <div class="buttons">
+            <button class="button-options" id="salt-button" data-broth-id="1">
+              <img src="./assets/Card-Salt.png" alt="" />
+            </button>
+
+            <button class="button-options" id="shoyu-button" data-broth-id="2">
+              <img src="./assets/Card-Shoyu.png" alt="" />
+            </button>
+
+            <button class="button-options" id="miso-button" data-broth-id="3">
+              <img src="./assets/Card-Miso.png" alt="" />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="content-container" id="content-container">
+        <div class="element-content">
+          <h1>It’s time to choose (or not) your meat!</h1>
+          <p>Some people love, some don’t. We have options for all tastes.</p>
+          <div class="buttons">
+            <button class="button-options" id="chesu-button" data-broth-id="1">
+              <img src="./assets/Card-Chasu.png" alt="" />
+            </button>
+
+            <button class="button-options" id="yasai-button" data-broth-id="2">
+              <img src="./assets/Card-Yasai.png" alt="" />
+            </button>
+
+            <button
+              class="button-options"
+              id="karaague-button"
+              data-broth-id="3"
+            >
+              <img src="./assets/Card-Karaague.png" alt="" />
+            </button>
+          </div>
+          <button class="button-place">Place my order</button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
