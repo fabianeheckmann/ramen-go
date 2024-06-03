@@ -1,155 +1,40 @@
 const apiUrl = "https://api.tech.redventures.com.br";
 
+let originalButtonImages = {};
+
 document.addEventListener("DOMContentLoaded", () => {
   loadBroths();
   loadProteins();
+  setupOrderNowButton();
+  setupOrderButton();
+  const clearButton = document.getElementById("clear-button");
+  if (clearButton) {
+    clearButton.addEventListener("click", clearSelections);
+  }
 });
 
-document.addEventListener("DOMContentLoaded", function () {
+function setupOrderNowButton() {
   const orderNowButton = document.getElementById("order-now-button");
   const contentContainer = document.getElementById("content-container");
 
-  orderNowButton.addEventListener("click", function () {
-    const containerPosition = contentContainer.offsetTop;
+  if (orderNowButton && contentContainer) {
+    orderNowButton.addEventListener("click", function () {
+      const containerPosition = contentContainer.offsetTop;
 
-    window.scrollTo({
-      top: containerPosition,
-      behavior: "smooth",
+      window.scrollTo({
+        top: containerPosition,
+        behavior: "smooth",
+      });
     });
-  });
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  const saltButton = document.getElementById("salt-button");
-  const shoyuButton = document.getElementById("shoyu-button");
-  const misoButton = document.getElementById("miso-button");
-
-  let selectedButton = null;
-  let originalButtonImages = {};
-
-  originalButtonImages[saltButton.id] = saltButton.querySelector("img").src;
-  originalButtonImages[shoyuButton.id] = shoyuButton.querySelector("img").src;
-  originalButtonImages[misoButton.id] = misoButton.querySelector("img").src;
-
-  function resetButtonImage(button) {
-    button.querySelector("img").src = originalButtonImages[button.id];
   }
+}
 
-  saltButton.addEventListener("click", function () {
-    if (selectedButton !== saltButton) {
-      if (selectedButton) {
-        resetButtonImage(selectedButton);
-      }
-      saltButton.querySelector("img").src = "./assets/Card-Salt-blue.png";
-      selectedButton = saltButton;
-    } else {
-      resetButtonImage(saltButton);
-      selectedButton = null;
-    }
-    console.log(
-      selectedButton ? selectedButton.getAttribute("data-broth-id") : null
-    );
-  });
-
-  shoyuButton.addEventListener("click", function () {
-    if (selectedButton !== shoyuButton) {
-      if (selectedButton) {
-        resetButtonImage(selectedButton);
-      }
-      shoyuButton.querySelector("img").src = "./assets/Card-Shoyu-blue.png";
-      selectedButton = shoyuButton;
-    } else {
-      resetButtonImage(shoyuButton);
-      selectedButton = null;
-    }
-    console.log(
-      selectedButton ? selectedButton.getAttribute("data-broth-id") : null
-    );
-  });
-
-  misoButton.addEventListener("click", function () {
-    if (selectedButton !== misoButton) {
-      if (selectedButton) {
-        resetButtonImage(selectedButton);
-      }
-      misoButton.querySelector("img").src = "./assets/Card-Miso-blue.png";
-      selectedButton = misoButton;
-    } else {
-      resetButtonImage(misoButton);
-      selectedButton = null;
-    }
-    console.log(
-      selectedButton ? selectedButton.getAttribute("data-broth-id") : null
-    );
-  });
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  const chesuButton = document.getElementById("chesu-button");
-  const yasaiButton = document.getElementById("yasai-button");
-  const karaagueButton = document.getElementById("karaague-button");
-
-  let selectedButton = null;
-  let originalButtonImages = {};
-
-  originalButtonImages[chesuButton.id] = chesuButton.querySelector("img").src;
-  originalButtonImages[yasaiButton.id] = yasaiButton.querySelector("img").src;
-  originalButtonImages[karaagueButton.id] =
-    karaagueButton.querySelector("img").src;
-
-  function resetButtonImage(button) {
-    button.querySelector("img").src = originalButtonImages[button.id];
+function setupOrderButton() {
+  const placeOrderButton = document.querySelector(".button-place");
+  if (placeOrderButton) {
+    placeOrderButton.addEventListener("click", submitLamen);
   }
-
-  chesuButton.addEventListener("click", function () {
-    if (selectedButton !== chesuButton) {
-      if (selectedButton) {
-        resetButtonImage(selectedButton);
-      }
-      chesuButton.querySelector("img").src = "./assets/Card-Chasu-blue.png";
-      selectedButton = chesuButton;
-    } else {
-      resetButtonImage(chesuButton);
-      selectedButton = null;
-    }
-    console.log(
-      selectedButton ? selectedButton.getAttribute("data-broth-id") : null
-    );
-  });
-
-  yasaiButton.addEventListener("click", function () {
-    if (selectedButton !== yasaiButton) {
-      if (selectedButton) {
-        resetButtonImage(selectedButton);
-      }
-      yasaiButton.querySelector("img").src = "./assets/Card-Yasai-blue.png";
-      selectedButton = yasaiButton;
-    } else {
-      resetButtonImage(yasaiButton);
-      selectedButton = null;
-    }
-    console.log(
-      selectedButton ? selectedButton.getAttribute("data-broth-id") : null
-    );
-  });
-
-  karaagueButton.addEventListener("click", function () {
-    if (selectedButton !== karaagueButton) {
-      if (selectedButton) {
-        resetButtonImage(selectedButton);
-      }
-      karaagueButton.querySelector("img").src =
-        "./assets/Card-Karaague-blue.png";
-      selectedButton = karaagueButton;
-    } else {
-      resetButtonImage(karaagueButton);
-      selectedButton = null;
-    }
-    console.log(
-      selectedButton ? selectedButton.getAttribute("data-broth-id") : null
-    );
-  });
-});
+}
 
 function loadBroths() {
   fetch(`${apiUrl}/broths`, {
@@ -159,13 +44,46 @@ function loadBroths() {
   })
     .then((response) => response.json())
     .then((data) => {
-      const brothSelect = document.getElementById("broth");
+      const brothButtonsContainer = document.getElementById("broth-buttons");
+      if (!brothButtonsContainer) return;
+
+      let selectedButton = null;
+
       data.forEach((broth) => {
-        const option = document.createElement("option");
-        option.value = broth.id;
-        option.textContent = broth.name;
-        brothSelect.appendChild(option);
+        const button = document.createElement("button");
+        button.className = "button-options";
+        button.id = `${broth.name.toLowerCase()}-button`;
+        button.setAttribute("data-broth-id", broth.id);
+
+        const img = document.createElement("img");
+        img.src = `./assets/Card-${broth.name}.png`;
+        img.alt = broth.name;
+
+        button.appendChild(img);
+        brothButtonsContainer.appendChild(button);
+
+        originalButtonImages[button.id] = img.src;
+
+        button.addEventListener("click", function () {
+          if (selectedButton !== button) {
+            if (selectedButton) {
+              resetButtonImage(selectedButton);
+            }
+            img.src = `./assets/Card-${broth.name}-blue.png`;
+            selectedButton = button;
+          } else {
+            resetButtonImage(button);
+            selectedButton = null;
+          }
+          console.log(
+            selectedButton ? selectedButton.getAttribute("data-broth-id") : null
+          );
+        });
       });
+
+      function resetButtonImage(button) {
+        button.querySelector("img").src = originalButtonImages[button.id];
+      }
     })
     .catch((error) => console.error("Erro ao carregar os caldos:", error));
 }
@@ -178,42 +96,104 @@ function loadProteins() {
   })
     .then((response) => response.json())
     .then((data) => {
-      const proteinsDiv = document.getElementById("proteins");
+      const proteinsButtonsContainer =
+        document.getElementById("proteins-buttons");
+      if (!proteinsButtonsContainer) return;
+
+      let selectedButton = null;
+
       data.forEach((protein) => {
-        const checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.id = protein.id;
-        checkbox.name = "proteins";
-        checkbox.value = protein.id;
+        const button = document.createElement("button");
+        button.className = "button-options";
+        button.id = `${protein.name.toLowerCase()}-button`;
+        button.setAttribute("data-protein-id", protein.id);
 
-        const label = document.createElement("label");
-        label.htmlFor = protein.id;
-        label.textContent = protein.name;
+        const img = document.createElement("img");
+        img.src = `./assets/Card-${protein.name}.png`;
+        img.alt = protein.name;
 
-        proteinsDiv.appendChild(checkbox);
-        proteinsDiv.appendChild(label);
-        proteinsDiv.appendChild(document.createElement("br"));
+        button.appendChild(img);
+        proteinsButtonsContainer.appendChild(button);
+
+        originalButtonImages[button.id] = img.src;
+
+        button.addEventListener("click", function () {
+          if (selectedButton !== button) {
+            if (selectedButton) {
+              resetButtonImage(selectedButton);
+            }
+            img.src = `./assets/Card-${protein.name}-blue.png`;
+            selectedButton = button;
+          } else {
+            resetButtonImage(button);
+            selectedButton = null;
+          }
+          console.log(
+            selectedButton
+              ? selectedButton.getAttribute("data-protein-id")
+              : null
+          );
+        });
       });
+
+      function resetButtonImage(button) {
+        button.querySelector("img").src = originalButtonImages[button.id];
+      }
     })
     .catch((error) => console.error("Erro ao carregar as proteínas:", error));
 }
 
-function submitLamen() {
-  const broth = document.getElementById("broth").value;
-  const proteins = Array.from(
-    document.querySelectorAll('input[name="proteins"]:checked')
-  ).map((checkbox) => checkbox.value);
+function resetButtonImage(button) {
+  button.querySelector("img").src = originalButtonImages[button.id];
+}
 
-  if (!broth || proteins.length === 0) {
+function clearSelections() {
+  const selectedBrothButton = document.querySelector("#broth-buttons .button-options img[src*='blue']");
+  if (selectedBrothButton) {
+    resetButtonImage(selectedBrothButton.parentElement);
+  }
+
+  const selectedProteinButton = document.querySelector("#proteins-buttons .button-options img[src*='blue']");
+  if (selectedProteinButton) {
+    resetButtonImage(selectedProteinButton.parentElement);
+  }
+
+   const orderDetailsContainer = document.getElementById("order-details-container");
+  orderDetailsContainer.innerHTML = '';
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}
+
+
+function submitLamen() {
+  const selectedBrothButton = document.querySelector(
+    "#broth-buttons .button-options img[src*='blue']"
+  );
+  const brothId = selectedBrothButton
+    ? selectedBrothButton.parentElement.getAttribute("data-broth-id")
+    : null;
+  const selectedProteinButton = document.querySelector(
+    "#proteins-buttons .button-options img[src*='blue']"
+  );
+  const proteinId = selectedProteinButton
+    ? selectedProteinButton.parentElement.getAttribute("data-protein-id")
+    : null;
+
+  if (!brothId || !proteinId) {
     document.getElementById("response").innerText =
       "Por favor, escolha pelo menos um caldo e uma proteína.";
     return;
   }
 
   const lamenData = {
-    brothId: broth,
-    proteinId: proteins[0], // Aqui estamos assumindo apenas uma proteína selecionada
+    brothId: brothId,
+    proteinId: proteinId,
   };
+
+  console.log("Enviando dados:", JSON.stringify(lamenData)); // Log dos dados enviados
 
   fetch(`${apiUrl}/orders`, {
     method: "POST",
@@ -224,19 +204,19 @@ function submitLamen() {
     body: JSON.stringify(lamenData),
   })
     .then((response) => {
+      console.log("Status da resposta:", response.status);
       if (!response.ok) {
         throw new Error(`Erro na requisição: ${response.status}`);
       }
       return response.json();
     })
     .then((data) => {
-      document.getElementById(
-        "response"
-      ).innerText = `Pedido realizado com sucesso! ID do pedido: ${data.orderId}`;
+      // Armazena os dados no localStorage
+      localStorage.setItem("orderData", JSON.stringify(data));
+      // Redireciona para outra tela
+      window.location.href = "success.html";
     })
     .catch((error) => {
-      console.error("Erro ao realizar o pedido:", error);
-      document.getElementById("response").innerText =
-        "Erro ao realizar o pedido. Tente novamente.";
+      console.error(error);
     });
 }

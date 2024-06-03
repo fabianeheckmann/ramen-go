@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="success.css" />
+</head>
+<body>
+    <div id="order-details-container">
+        <div class="banner-left"><img src="./assets/Rectangle 3.png" alt=""></div>
+        <h2>your order:</h2>
+    </div>
+    <div class="right-banner">
+        <button id="clear-button" class="clear-button">Place new order</button>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const orderDetailsContainer = document.getElementById("order-details-container");
+          const orderData = JSON.parse(localStorage.getItem("orderData"));
+    
+          if (orderData) {
+            // Crie elementos HTML para a imagem e descrição do pedido
+            const orderImage = document.createElement("img");
+            orderImage.src = orderData.image;
+            orderImage.alt = "Ramen Image";
+    
+            const orderDescription = document.createElement("p");
+            orderDescription.textContent = orderData.description;
+    
+            // Adicione os elementos ao contêiner de detalhes do pedido
+            orderDetailsContainer.appendChild(orderImage);
+            orderDetailsContainer.appendChild(orderDescription);
+    
+            // Limpa o localStorage para evitar uso futuro indesejado
+            localStorage.removeItem("orderData");
+          } else {
+            orderDetailsContainer.textContent = "Nenhum dado do pedido encontrado.";
+          }
+        });
+      </script>
+</body>
+</html>
