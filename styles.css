@@ -70,22 +70,23 @@ body {
 .order-now-button {
   position: absolute;
   height: 60px;
-  width: 213px;
-  top: 78%;
+  display: flex;
+  width: 220px;
+  top: 71%;
   left: 17%;
   border-radius: 50px;
   border: none;
   background-color: #1820ef;
   color: #ffffff;
   text-align: start;
-  font-weight: 800;
-  font-size: 14px;
-  line-height: 20.79px;
+  font-weight: 800px;
+  font-size: 4px;
+  line-height: 17.79px;
   padding: 20px;
   letter-spacing: 0.1em;
 
   img {
-    margin-left: 40px;
+    margin-left: 12px;
     width: 14px;
     height: 12px;
   }
@@ -96,6 +97,25 @@ body {
   background-color: #ffc024;
   color: #1820ef;
   transition: 0.3s;
+}
+
+@media (min-width: 768px) {
+  .title-text {
+      font-size: 1.5em;
+      max-width: 400px;
+  }
+
+  .order-now-button {
+      font-size: 1.2em;
+  }
+
+  .go-figure {
+      width: 200px;
+  }
+
+  .letters-figure {
+      left: 220px;
+  }
 }
 
 .element-content {
