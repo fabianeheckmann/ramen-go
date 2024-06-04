@@ -23,6 +23,10 @@ body {
   height: auto;
 }
 
+.figure, .go-figure, .letters-figure, .logo-image, .title-text, .order-now-button {
+  position: absolute;
+}
+
 .figure {
   position: absolute;
   top: 38px;
@@ -46,7 +50,6 @@ body {
 }
 
 .logo-image {
-  position: absolute;
   width: 124.69px;
   height: 15.67px;
   top: 40.33px;
@@ -70,23 +73,22 @@ body {
 .order-now-button {
   position: absolute;
   height: 60px;
-  display: flex;
-  width: 220px;
-  top: 71%;
+  width: 213px;
+  top: 78%;
   left: 17%;
   border-radius: 50px;
   border: none;
   background-color: #1820ef;
   color: #ffffff;
   text-align: start;
-  font-weight: 800px;
-  font-size: 4px;
-  line-height: 17.79px;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 20.79px;
   padding: 20px;
   letter-spacing: 0.1em;
 
   img {
-    margin-left: 12px;
+    margin-left: 40px;
     width: 14px;
     height: 12px;
   }
@@ -99,24 +101,6 @@ body {
   transition: 0.3s;
 }
 
-@media (min-width: 768px) {
-  .title-text {
-      font-size: 1.5em;
-      max-width: 400px;
-  }
-
-  .order-now-button {
-      font-size: 1.2em;
-  }
-
-  .go-figure {
-      width: 200px;
-  }
-
-  .letters-figure {
-      left: 220px;
-  }
-}
 
 .element-content {
   h1 {
@@ -176,3 +160,158 @@ body {
   color: #1820ef;
   transition: 0.3s;
 }
+
+@media (max-width: 1200px) {
+  .figure {
+    top: 30px;
+    left: 380px;
+    width: 600px;
+  }
+
+  .go-figure {
+    top: 233px;
+    left: 286px;
+    width: 260px;
+    height: 146px;
+  }
+
+  .letters-figure {
+    top: 172px;
+    left: 224px;
+  }
+
+  .logo-image {
+    width: 100px;
+    height: 12.5px;
+    top: 40px;
+    left: 30px;
+  }
+
+  .title-text {
+    height: 50px;
+    width: 290px;
+    top: 372px;
+    left: 222px;
+  }
+
+ 
+  .order-now-button {
+    height: 58px;
+    width: 210px;
+    top: 556px;
+    left: 210px;
+    font-size: 17px;
+    padding: 17px;
+    display: flex;
+
+    img {
+      margin-left: 14px;
+      width: 14px;
+      height: 12px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .figure {
+    top: 30px;
+    left: 380px;
+    width: 600px;
+  }
+
+  .go-figure {
+    top: 140px;
+    left: 221px;
+    width: 150px;
+    height: 75px;
+  }
+
+  .letters-figure {
+    top: 79px;
+    left: 181px;
+    height: 138px;
+  }
+
+  .logo-image {
+    width: 80px;
+    height: 10px;
+    top: 20px;
+    left: 20px;
+  }
+
+  .title-text {
+    width: 164px;
+    font-size: 10px;
+    line-height: 19px;
+    top: 214px;
+    left: 186px;
+  }
+
+  .order-now-button {
+    height: 44px;
+    width: 131px;
+    top: 318px;
+    left: 175px;
+    font-size: 10px;
+    padding: 10px;
+
+    img {
+      margin-left: 9px;
+      width: 14px;
+      height: 12px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .figure {
+    top: 10px;
+    left: 130px;
+    width: 200px;
+  }
+
+  .go-figure {
+    top: 76px;
+    left: 90px;
+    width: 96px;
+    height: 50px;
+  }
+
+  .letters-figure {
+    top: 50px;
+    left: 72px;
+    height: 74px;
+  }
+
+  .logo-image {
+    width: 60px;
+    height: 8px;
+    top: 10px;
+    left: 10px;
+  }
+
+  .title-text {
+    width: 70px;
+    font-size: 8px;
+    top: 124px;
+    left: 73px;
+    letter-spacing: 0.01rem;
+    line-height: 7px;
+  }
+
+  .order-now-button {
+    height: 24px;
+    width: 89px;
+    top: 188px;
+    left: 68px;
+    font-size: 6px;
+    line-height: 9px;
+    padding: 7px;
+    display: flex;
+
+     img {
+      margin-left: 9px;
+      width: 14px;
+      height: 12px;
+     }
+  }
