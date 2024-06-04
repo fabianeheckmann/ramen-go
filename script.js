@@ -85,7 +85,7 @@ function loadBroths() {
         button.querySelector("img").src = originalButtonImages[button.id];
       }
     })
-    .catch((error) => console.error("Erro ao carregar os caldos:", error));
+    .catch((error) => console.error("error loading data:", error));
 }
 
 function loadProteins() {
@@ -140,7 +140,7 @@ function loadProteins() {
         button.querySelector("img").src = originalButtonImages[button.id];
       }
     })
-    .catch((error) => console.error("Erro ao carregar as proteínas:", error));
+    .catch((error) => console.error("error loading data:", error));
 }
 
 function resetButtonImage(button) {
@@ -148,25 +148,30 @@ function resetButtonImage(button) {
 }
 
 function clearSelections() {
-  const selectedBrothButton = document.querySelector("#broth-buttons .button-options img[src*='blue']");
+  const selectedBrothButton = document.querySelector(
+    "#broth-buttons .button-options img[src*='blue']"
+  );
   if (selectedBrothButton) {
     resetButtonImage(selectedBrothButton.parentElement);
   }
 
-  const selectedProteinButton = document.querySelector("#proteins-buttons .button-options img[src*='blue']");
+  const selectedProteinButton = document.querySelector(
+    "#proteins-buttons .button-options img[src*='blue']"
+  );
   if (selectedProteinButton) {
     resetButtonImage(selectedProteinButton.parentElement);
   }
 
-   const orderDetailsContainer = document.getElementById("order-details-container");
-  orderDetailsContainer.innerHTML = '';
+  const orderDetailsContainer = document.getElementById(
+    "order-details-container"
+  );
+  orderDetailsContainer.innerHTML = "";
 
   window.scrollTo({
     top: 0,
     behavior: "smooth",
   });
 }
-
 
 function submitLamen() {
   const selectedBrothButton = document.querySelector(
@@ -182,9 +187,22 @@ function submitLamen() {
     ? selectedProteinButton.parentElement.getAttribute("data-protein-id")
     : null;
 
-  if (!brothId || !proteinId) {
-    document.getElementById("response").innerText =
-      "Por favor, escolha pelo menos um caldo e uma proteína.";
+  if (!brothId && !proteinId) {
+    document.getElementById("response").innerText = alert(
+      "please choose only one type of broth and only one type of protein."
+    );
+    return;
+  }
+  if (!brothId) {
+    document.getElementById("response").innerText = alert(
+      "Please, choose at least one type of protein."
+    );
+    return;
+  }
+  if (!proteinId) {
+    document.getElementById("response").innerText = alert(
+      "Please, choose at least one type of broth."
+    );
     return;
   }
 
@@ -193,7 +211,7 @@ function submitLamen() {
     proteinId: proteinId,
   };
 
-  console.log("Enviando dados:", JSON.stringify(lamenData)); // Log dos dados enviados
+  console.log("Enviando dados:", JSON.stringify(lamenData));
 
   fetch(`${apiUrl}/orders`, {
     method: "POST",
@@ -204,16 +222,13 @@ function submitLamen() {
     body: JSON.stringify(lamenData),
   })
     .then((response) => {
-      console.log("Status da resposta:", response.status);
       if (!response.ok) {
-        throw new Error(`Erro na requisição: ${response.status}`);
+        throw new Error(`Error: ${response.status}`);
       }
       return response.json();
     })
     .then((data) => {
-      // Armazena os dados no localStorage
       localStorage.setItem("orderData", JSON.stringify(data));
-      // Redireciona para outra tela
       window.location.href = "success.html";
     })
     .catch((error) => {

@@ -1,4 +1,4 @@
- body {
+body {
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -10,7 +10,7 @@
   margin: auto;
   max-width: 100%;
   padding: 5px;
-} 
+}
 
 .image-banner {
   position: relative;
@@ -32,17 +32,17 @@
 }
 
 .go-figure {
-    position: absolute;
-    top: 36%;
-    left: 23.5%;
-    width: 40vh;
-    height: 20vh;
+  position: absolute;
+  top: 36%;
+  left: 23.5%;
+  width: 40vh;
+  height: 20vh;
 }
 
 .letters-figure {
-    position: absolute;
-    top: 33%;
-    left: 18%;
+  position: absolute;
+  top: 24%;
+  left: 18%;
 }
 
 .logo-image {
@@ -54,35 +54,35 @@
 }
 
 .title-text {
-    position: absolute;
-    width: 260px;
-    height: 200px;
-    top: 57%;
-    left: 18%;
-    font-weight: 400px;
-    font-size: 24px;
-    line-height: 24px;
-    color: #ffffff;
-    text-align: left;
-    letter-spacing: 0.1em;
+  position: absolute;
+  width: 260px;
+  height: 200px;
+  top: 52%;
+  left: 18%;
+  font-weight: 400px;
+  font-size: 24px;
+  line-height: 24px;
+  color: #ffffff;
+  text-align: left;
+  letter-spacing: 0.1em;
 }
 
 .order-now-button {
-    position: absolute;
-    height: 60px;
-    width: 213px;
-    top: 78%;
-    left: 18%;
-    border-radius: 50px;
-    border: none;
-    background-color: #1820ef;
-    color: #ffffff;
-    text-align: start;
-    font-weight: 800;
-    font-size: 14px;
-    line-height: 20.79px;
-    padding: 20px;
-    letter-spacing: 0.1em;
+  position: absolute;
+  height: 60px;
+  width: 213px;
+  top: 78%;
+  left: 17%;
+  border-radius: 50px;
+  border: none;
+  background-color: #1820ef;
+  color: #ffffff;
+  text-align: start;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 20.79px;
+  padding: 20px;
+  letter-spacing: 0.1em;
 
   img {
     margin-left: 40px;
@@ -127,32 +127,32 @@
 }
 
 .button-place {
-    justify-content: center;
-    height: 60px;
-    width: 213px;
-    margin-top: 40px;
-    border-radius: 50px;
-    border: none;
-    background-color: #C5C5C5;
+  justify-content: center;
+  height: 60px;
+  width: 213px;
+  margin-top: 40px;
+  border-radius: 50px;
+  border: none;
+  background-color: #c5c5c5;
+  color: #ffffff;
+  text-align: start;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 20.79px;
+  padding: 20px;
+  letter-spacing: 0.1em;
+  margin: 40px;
+
+  img {
+    width: 14px;
+    height: 12px;
     color: #ffffff;
-    text-align: start;
-    font-weight: 800;
-    font-size: 14px;
-    line-height: 20.79px;
-    padding: 20px;
-    letter-spacing: 0.1em;
-  
-    img {
-      /* margin-left: 10px; */
-      width: 14px;
-      height: 12px;
-      color: #FFFFFF
-    }
   }
-  
-  .button-place:hover {
-    cursor: pointer;
-    background-color: #ffc024;
-    color: #1820ef;
-    transition: 0.3s;
-  }
+}
+
+.button-place:hover {
+  cursor: pointer;
+  background-color: #ffc024;
+  color: #1820ef;
+  transition: 0.3s;
+}
