@@ -98,7 +98,7 @@ body {
   cursor: pointer;
   background-color: #ffc024;
   color: #1820ef;
-  transition: 0.3s;
+  transition: 0.5s;
 }
 
 
@@ -158,7 +158,7 @@ body {
   cursor: pointer;
   background-color: #ffc024;
   color: #1820ef;
-  transition: 0.3s;
+  transition: 0.5s;
 }
 
 @media (max-width: 1200px) {
@@ -215,20 +215,20 @@ body {
 @media (max-width: 768px) {
   .figure {
     top: 30px;
-    left: 380px;
-    width: 600px;
+    left: 256px;
+    width: 348px;
   }
 
   .go-figure {
     top: 140px;
-    left: 221px;
+    left: 205px;
     width: 150px;
     height: 75px;
   }
 
   .letters-figure {
     top: 79px;
-    left: 181px;
+    left: 171px;
     height: 138px;
   }
 
@@ -244,14 +244,14 @@ body {
     font-size: 10px;
     line-height: 19px;
     top: 214px;
-    left: 186px;
+    left: 176px;
   }
 
   .order-now-button {
     height: 44px;
     width: 131px;
     top: 318px;
-    left: 175px;
+    left: 171px;
     font-size: 10px;
     padding: 10px;
 
