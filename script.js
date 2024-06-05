@@ -195,13 +195,13 @@ function submitLamen() {
   }
   if (!brothId) {
     document.getElementById("response").innerText = alert(
-      "Please, choose at least one type of protein."
+      "Please, choose at least one type of broth."
     );
     return;
   }
   if (!proteinId) {
     document.getElementById("response").innerText = alert(
-      "Please, choose at least one type of broth."
+      "Please, choose at least one type of protein."
     );
     return;
   }
